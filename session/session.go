@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/url"
 	"sync"
+	"time"
 )
 
 var provides = make(map[string]Provider)
@@ -84,5 +85,23 @@ func (manager *Manager) SessionStart(w http.ResponseWriter, r *http.Request) (se
 
 //SessionDestroy ...
 func (manager *Manager) SessionDestroy(w http.ResponseWriter, r *http.Request) {
+	cookie, err := r.Cookie(manager.cookieName)
+	if err != nil || cookie.Value == "" {
+		return
+	} else {
+		manager.lock.Lock()
+		defer manager.lock.Unlock()
+		manager.provider.SessionDestroy(cookie.Value)
+		expiration := time.Now()
+		cookie := http.Cookie{Name: manager.cookieName, Path: "/", HttpOnly: true, Expires: expiration, MaxAge: -1}
+		http.SetCookie(w, &cookie)
+	}
+}
 
+//GC session GC
+func (manager *Manager) GC() {
+	manager.lock.Lock()
+	defer manager.lock.Unlock()
+	manager.provider.SessionGC(manager.maxLifeTime)
+	time.AfterFunc(time.Duration(manager.maxLifeTime), func() { manager.GC() })
 }
