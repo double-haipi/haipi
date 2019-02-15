@@ -51,6 +51,7 @@ func login(w http.ResponseWriter, r *http.Request) {
 	} else {
 		sess.Set("username", r.Form["username"])
 		http.Redirect(w, r, "/", 302)
+		//add new comment
 	}
 }
 
