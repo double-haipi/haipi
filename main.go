@@ -38,6 +38,13 @@ func main() {
 	// switchTest()
 	// sumAndProductTest()
 	// paramsTest(1, 2, 3, 4)
+	// parseJSONTest()
+	// parseJSONTest2()
+	// simpleJSONTest()
+	// generateJSONTest()
+	// jsonTagTest()
+	// cmdParamsTest()
+	cmdParasByFlagTest()
 }
 
 //example
@@ -184,7 +191,7 @@ func addTest() {
 	fmt.Println(addFunc(7, 8))
 }
 
-//类型方法
+//Circle ...
 type Circle struct {
 	radius float64
 }
