@@ -44,7 +44,10 @@ func main() {
 	// generateJSONTest()
 	// jsonTagTest()
 	// cmdParamsTest()
-	cmdParasByFlagTest()
+	// cmdParasByFlagTest()
+	// isIP("1.2.2.1")
+	// resolveContentFromWeb()
+	regexpFindTest()
 }
 
 //example
