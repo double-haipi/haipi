@@ -47,7 +47,9 @@ func main() {
 	// cmdParasByFlagTest()
 	// isIP("1.2.2.1")
 	// resolveContentFromWeb()
-	regexpFindTest()
+	// regexpFindTest()
+	// regexExpandTest()
+	irisSvr()
 }
 
 //example

@@ -88,3 +88,19 @@ func formatPrint(prefix string, content interface{}) {
 	fmt.Println(strings.Repeat("-", 20))
 	fmt.Println(prefix, content)
 }
+
+func regexExpandTest() {
+	source := []byte(`
+	call hello alice
+	hello bob
+	call hello eve
+	`)
+	pattern := regexp.MustCompile(`(?m)(call)\s+(?P<cmd>\w+)\s+(?P<arg>.+)\s*$`)
+	result := []byte{}
+	indexs := pattern.FindAllSubmatchIndex(source, -1)
+	fmt.Println("indexes:", indexs)
+	for _, s := range indexs {
+		result = pattern.Expand(result, []byte("$cmd('$arg')\n"), source, s)
+	}
+	fmt.Println(string(result))
+}
