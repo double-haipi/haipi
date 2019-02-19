@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
-<<<<<<< HEAD
+	"io/ioutil"
+	"net/http"
 	"regexp"
+	"strings"
 )
 
 func regexTest() {
@@ -132,13 +134,7 @@ func numMatchTest() {
 	} else {
 		fmt.Println("数字")
 	}
-=======
-	"io/ioutil"
-	"net/http"
-	"regexp"
-	"strings"
-)
-
+}
 func isIP(ip string) bool {
 	if m, _ := regexp.MatchString("^[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}$", ip); !m {
 		fmt.Println("ip 格式非法")
@@ -234,5 +230,4 @@ func regexExpandTest() {
 		result = pattern.Expand(result, []byte("$cmd('$arg')\n"), source, s)
 	}
 	fmt.Println(string(result))
->>>>>>> 473aa854f40af9689c974fb5c731b54cc5acd3fd
 }
