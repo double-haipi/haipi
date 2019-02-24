@@ -51,5 +51,6 @@ func main() {
 	// mysqlConnTest()
 	// parseXML()
 	// generateXML()
-	irisSvr()
+	// irisSvr()
+	configIris()
 }
